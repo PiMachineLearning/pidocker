@@ -16,7 +16,7 @@ mkdir mount
 
 sudo mount "/dev/mapper/$DEVFILE" ./mount
 
-tar -czf - -C mount . | docker import - pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
+sudo tar -czf - -C mount . | docker import - pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 
 docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
