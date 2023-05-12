@@ -20,6 +20,7 @@ sudo tar -czf - -C mount . | docker import - pimachinelearning/raspi-os-lite:"$L
 
 docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
+docker push ghcr.io/pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 
 sudo umount ./mount
 kpartx -d "$LATEST_PI_VER-raspios-bullseye-armhf-lite.img"

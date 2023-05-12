@@ -19,6 +19,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Login to GHCR
+        run: |
+          echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u PiMachineLearning --password-stdin
           
       - name: Prepare images
         run: |
