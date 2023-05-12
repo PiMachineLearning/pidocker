@@ -24,4 +24,4 @@ docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 sudo umount ./mount
 kpartx -d "$LATEST_PI_VER-raspios-bullseye-armhf-lite.img"
 rm -rf ./mount
-rm 2023-05-03-raspios-bullseye-armhf-lite.img
+rm "$LATEST_PI_VER"-raspios-bullseye-armhf-lite.img
