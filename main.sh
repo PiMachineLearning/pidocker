@@ -16,11 +16,16 @@ mkdir mount
 
 sudo mount "/dev/mapper/$DEVFILE" ./mount
 
-sudo tar -czf - -C mount . | docker import - pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
+sudo tar -czf - -C mount . > ./raspi.tar
+
+docker import - pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" < raspi.tar
+docker import - pimachinelearning/raspi-os-lite:latest < raspi.tar
 
 docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
+docker push pimachinelearning/raspi-os-lite:latest
 docker push ghcr.io/pimachinelearning/pidocker:"$LATEST_PI_VER"
+docker push ghcr.io/pimachinelearning/pidocker:latest
 
 sudo umount ./mount
 sudo kpartx -d "$LATEST_PI_VER-raspios-bullseye-armhf-lite.img"
