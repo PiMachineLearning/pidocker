@@ -24,8 +24,12 @@ docker import - pimachinelearning/raspi-os-lite:latest < raspi.tar
 docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker tag pimachinelearning/raspi-os-lite:latest pimachinelearning/raspi-os-lite:latest
 
+docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" pimachinelearning/pidocker:"$LATEST_PI_VER"
+docker tag pimachinelearning/raspi-os-lite:latest pimachinelearning/pidocker:latest
+
 docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker push pimachinelearning/raspi-os-lite:latest
+
 docker push ghcr.io/pimachinelearning/pidocker:"$LATEST_PI_VER"
 docker push ghcr.io/pimachinelearning/pidocker:latest
 
