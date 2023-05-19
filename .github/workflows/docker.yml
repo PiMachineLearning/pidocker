@@ -24,7 +24,7 @@ jobs:
         run: |
           echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u PiMachineLearning --password-stdin
           
-      - name: Prepare images
+      - name: Create and push image
         run: |
             cd $GITHUB_WORKSPACE
             sudo apt install kpartx
