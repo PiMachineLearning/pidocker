@@ -9,22 +9,16 @@ wget "https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz"
 
 xz -d root.tar.xz
 
+LATEST_PI_VER=$(curl https://downloads.raspberrypi.org/raspios_lite_armhf/os.json | jq '.["release_date"]')
+
 docker import - pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" < root.tar
 docker import - pimachinelearning/raspi-os-lite:latest < root.tar
 
 docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker tag pimachinelearning/raspi-os-lite:latest pimachinelearning/raspi-os-lite:latest
 
-docker tag pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" ghcr.io/pimachinelearning/pimachinelearning/pidocker:"$LATEST_PI_VER"
-docker tag pimachinelearning/raspi-os-lite:latest ghcr.io/pimachinelearning/pimachinelearning/pidocker:latest
-
 docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker push pimachinelearning/raspi-os-lite:latest
 
-docker push ghcr.io/pimachinelearning/pimachinelearning/pidocker:"$LATEST_PI_VER"
-docker push ghcr.io/pimachinelearning/pimachinelearning/pidocker:latest
 
-sudo umount ./mount
-sudo kpartx -d "$LATEST_PI_VER-raspios-bullseye-armhf-lite.img"
-rm -rf ./mount
-rm "$LATEST_PI_VER"-raspios-bullseye-armhf-lite.img
+rm -f root.tar.xz
