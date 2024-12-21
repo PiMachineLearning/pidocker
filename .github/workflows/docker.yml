@@ -19,14 +19,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      
-      - name: Login to GHCR
-        run: |
-          echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u PiMachineLearning --password-stdin
           
       - name: Create and push image
         run: |
             cd $GITHUB_WORKSPACE
-            sudo apt install kpartx
             chmod +x main.sh
             ./main.sh
