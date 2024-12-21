@@ -9,7 +9,7 @@ wget "https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz"
 
 xz -d root.tar.xz
 
-LATEST_PI_VER=$(curl https://downloads.raspberrypi.org/raspios_lite_armhf/os.json | jq '.["release_date"]')
+LATEST_PI_VER=$(curl https://downloads.raspberrypi.org/raspios_lite_armhf/os.json | jq -r '.["release_date"]')
 
 docker import - pimachinelearning/raspi-os-lite:"$LATEST_PI_VER" < root.tar
 docker import - pimachinelearning/raspi-os-lite:latest < root.tar
