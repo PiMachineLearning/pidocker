@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-rm -f ./*.img
 rm -f ./*.xz
-sudo umount ./mount 
-rm -rf mount
 
 wget "https://downloads.raspberrypi.org/raspios_lite_armhf/root.tar.xz"
 
@@ -19,6 +16,5 @@ docker tag pimachinelearning/raspi-os-lite:latest pimachinelearning/raspi-os-lit
 
 docker push pimachinelearning/raspi-os-lite:"$LATEST_PI_VER"
 docker push pimachinelearning/raspi-os-lite:latest
-
 
 rm -f root.tar.xz
